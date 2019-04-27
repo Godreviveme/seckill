@@ -1,0 +1,20 @@
+# logs
+*.log
+*.gz
+*.log.*
+**/log/
+
+# target
+*.class
+*.war
+**/target/
+
+# eclipse, intellij and other config files
+**/.project
+**/.classpath
+**/.settings/
+**/.idea/
+*.iml
+*.DS_Store
+
+/bin/
