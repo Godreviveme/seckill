@@ -5,7 +5,6 @@ import com.xiaolong.miaosha.service.MiaoshaUserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.support.WebDataBinderFactory;
@@ -40,7 +39,6 @@ public class  UserArgumentResolver implements HandlerMethodArgumentResolver {
         }
         String token = StringUtils.isEmpty(paramToken) ? cookieToken : paramToken;
         return userService.getByToken(token, response);
-
     }
 
     private String getCookieValue(HttpServletRequest request, String cookieName) {

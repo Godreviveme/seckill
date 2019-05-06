@@ -1,6 +1,7 @@
 package com.xiaolong.miaosha.controller;
 
 import com.xiaolong.miaosha.domain.User;
+import com.xiaolong.miaosha.rabbitmq.MQSender;
 import com.xiaolong.miaosha.redis.RedisService;
 import com.xiaolong.miaosha.redis.Userkey;
 import com.xiaolong.miaosha.result.Result;
@@ -21,6 +22,8 @@ public class SampleController {
     UserService userService;
     @Autowired
     RedisService redisService;
+    @Autowired
+    MQSender sender;
 
     @GetMapping("/thymeleaf")
     public String thymeleaf(Model model) {
@@ -56,5 +59,34 @@ public class SampleController {
         redisService.set(Userkey.getById,"1", user);
         return Result.success(true);
     }
+//
+//    @RequestMapping("/mq")
+//    @ResponseBody
+//    public Result<String> mq() {
+//        sender.send("hello, xiaolong");
+//        return Result.success("Hello World");
+//    }
+//
+//
+//    @RequestMapping("/mq/topic")
+//    @ResponseBody
+//    public Result<String> topic() {
+//        sender.sendTopic("hello, xiaolong");
+//        return Result.success("Hello World");
+//    }
+//
+//    @RequestMapping("/mq/fanout")
+//    @ResponseBody
+//    public Result<String> fanout() {
+//        sender.sendFanout("hello, xiaolong");
+//        return Result.success("Hello World");
+//    }
+//    @RequestMapping("/mq/headers")
+//    @ResponseBody
+//    public Result<String> headers() {
+//        sender.sendHeaders("hello, xiaolong");
+//        return Result.success("Hello World");
+//    }
+
 
 }

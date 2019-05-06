@@ -1,7 +1,6 @@
 package com.xiaolong.miaosha.controller;
 
 import com.xiaolong.miaosha.redis.RedisService;
-import com.xiaolong.miaosha.result.CodeMsg;
 import com.xiaolong.miaosha.result.Result;
 import com.xiaolong.miaosha.service.MiaoshaUserService;
 import com.xiaolong.miaosha.vo.LoginVo;
@@ -34,10 +33,10 @@ public class LoginController {
 
     @RequestMapping("/do_login")
     @ResponseBody
-    public Result doLogin(HttpServletResponse response, @Valid LoginVo loginVo) {
+    public Result<String> doLogin(HttpServletResponse response, @Valid LoginVo loginVo) {
         log.info(loginVo.toString());
-        userService.login(response, loginVo);
-        return Result.success(true);
+        String token = userService.login(response, loginVo);
+        return Result.success(token);
     }
 
 }
